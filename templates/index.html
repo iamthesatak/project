@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>People Atlas — Northstar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="People Atlas home"><span class="brand-mark"><i></i><i></i><i></i></span><span>people<span class="brand-light">atlas</span></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <div class="workspace"><div class="workspace-icon">N</div><div><strong>Northstar Studio</strong><small>People & Culture</small></div><span class="chevron">⌄</span></div>
+      <div class="nav-label">PEOPLE</div>
+      <nav class="navigation">
+        <a href="#" class="nav-item"><span class="nav-icon">◫</span>Overview</a>
+        <a href="#" class="nav-item active"><span class="nav-icon">⌘</span>Organization<span class="nav-count">10</span></a>
+        <a href="#" class="nav-item"><span class="nav-icon">♙</span>Team directory</a>
+        <a href="#" class="nav-item"><span class="nav-icon">◷</span>Time off</a>
+        <a href="#" class="nav-item"><span class="nav-icon">▤</span>People analytics</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="help-card"><div class="help-spark">✳</div><strong>Need a hand?</strong><p>Our people team is always happy to help.</p><a href="mailto:people@northstar.example">Get in touch <span>↗</span></a></div><button class="user-profile"><div class="avatar avatar-violet avatar-small">SM</div><span><strong>Sam Morgan</strong><small>Workspace admin</small></span><span class="more">···</span></button></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumb">People <span>/</span> <strong>Organization</strong></div><div class="top-actions"><button class="icon-button" aria-label="Help">?</button><button class="icon-button notification" aria-label="Notifications">♧<i></i></button><div class="avatar avatar-violet avatar-small">SM</div></div></header>
+      <section class="content">
+        <div class="page-heading"><div><div class="eyebrow"><span class="live-dot"></span> PEOPLE & CULTURE <span class="eyebrow-slash">/</span> ORGANIZATION</div><h1>Class hierarchy<span class="title-period">.</span></h1><p class="subtitle">See how our people connect, grow, and lead together.</p></div><button class="primary-button" id="add-person"><span>＋</span> Add a person</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total people</span><span class="stat-icon lavender">♙</span></div><div class="stat-value" id="stat-total">—</div><div class="stat-foot"><span class="trend">↗ 8.2%</span> <span>vs. last quarter</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span>People team</span><span class="stat-icon pink">✳</span></div><div class="stat-value" id="stat-people">—</div><div class="stat-foot"><span class="stat-muted">across every chapter</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span>Departments</span><span class="stat-icon peach">⌘</span></div><div class="stat-value" id="stat-departments">—</div><div class="stat-foot"><span class="stat-muted">working as one team</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span>Leadership team</span><span class="stat-icon mint">↗</span></div><div class="stat-value" id="stat-leaders">—</div><div class="stat-foot"><span class="stat-muted">guiding our next steps</span></div></article>
+        </div>
+        <section class="org-panel">
+          <div class="org-toolbar"><div><h2>Our people map</h2><p>A little context goes a long way.</p></div><div class="toolbar-controls"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Find someone..." aria-label="Search people"><kbd>⌘ K</kbd></label><select id="department-filter" aria-label="Filter by department"><option value="all">All departments</option></select><button class="view-button" id="expand-all" title="Fit chart">⤢</button></div></div>
+          <div class="legend"><span><i class="legend-dot dot-violet"></i>Executive</span><span><i class="legend-dot dot-blue"></i>Leadership</span><span><i class="legend-dot dot-amber"></i>Management</span><span><i class="legend-dot dot-teal"></i>Individual contributor</span><span class="legend-note">Click a profile to learn more <span>↗</span></span></div>
+          <div class="chart-viewport" id="chart-viewport"><div class="org-chart" id="org-chart" aria-live="polite"></div></div>
+          <div class="chart-footer"><span><i class="live-dot"></i> Updated just now</span><span>Showing <strong id="visible-count">0</strong> people <span class="footer-divider">·</span> <button id="reset-filters">Reset view</button></span></div>
+        </section>
+        <footer class="page-footer"><span>Made for people, by people <span class="footer-heart">♥</span></span><span>Northstar Studio <span class="footer-divider">·</span> Internal directory</span></footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+  <aside class="profile-panel" id="profile-panel" aria-label="Employee profile" aria-hidden="true"><button class="close-panel" id="close-panel" aria-label="Close profile">×</button><div id="profile-content"></div></aside>
+  <div class="modal-backdrop" id="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="close-modal" id="close-modal" aria-label="Close">×</button><div class="modal-kicker">GROWING TOGETHER</div><h2 id="modal-title">Add someone new<span>.</span></h2><p class="modal-intro">Make room on the map for a new teammate.</p><form id="person-form"><div class="form-grid"><label class="form-field full">Full name<input name="name" required placeholder="e.g. Maya Patel"></label><label class="form-field full">Role / title<input name="title" required placeholder="e.g. People Experience Partner"></label><label class="form-field">Department<input name="department" required placeholder="e.g. People & Culture"></label><label class="form-field">Level<select name="level" required><option value="Individual contributor">Individual contributor</option><option>Management</option><option>Leadership</option><option>Executive</option></select></label><label class="form-field">Reports to<select name="manager_id" id="manager-select"><option value="">No manager</option></select></label><label class="form-field">Location<input name="location" required placeholder="e.g. Mumbai"></label><label class="form-field full">Work email<input type="email" name="email" required placeholder="name@northstar.example"></label><label class="form-field full">A little about them <span class="optional">OPTIONAL</span><textarea name="bio" rows="3" placeholder="What do they bring to the team?"></textarea></label></div><p class="form-error" id="form-error" role="alert"></p><div class="form-actions"><button type="button" class="cancel-button" id="cancel-modal">Cancel</button><button type="submit" class="primary-button">Add to the map <span>→</span></button></div></form></section></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="../static/app.js"></script>
+</body>
+</html>
